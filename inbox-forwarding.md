@@ -18,7 +18,7 @@ Triage & direct detection for mailbox auto-forwarding and redirect rules, enrich
 ### SPL A -- Triage Defender "Suspicious Inbox Forwarding Rule" Alerts
 - **Purpose:** Supercharge Defender for Office 365 alerts by adding destination-domain intelligence so analyst time targets the riskiest forwarding setups.
 - **Data Sources:** `m365:defender:alert` or `azure:defender:cloudalert`, with enrichment lookups for freemail/disposable domains, WHOIS age, OTX/OpenPhish hits, and `ipqs` domain risk.
-- **Logic Highlights:** Normalizes the forwarding target, extracts the domain, layers multiple intel lookups, and calculates a risk score that rewards disposable domains, young WHOIS age, phishing sightings, and high IPQS risk. Alerts scoring ≥ 50 are retained.
+- **Logic Highlights:** Normalizes the forwarding target, extracts the domain, layers multiple intel lookups, and calculates a risk score that rewards disposable domains, young WHOIS age, phishing sightings, and high IPQS risk. Alerts scoring >= 50 are retained.
 - **ATT&CK Mapping:** `T1114.003 - Email Collection: Email Forwarding Rule` -- identifying adversary-established auto-forward rules used for silent mailbox theft.
 
 ### SPL B -- Direct Detector from Exchange Unified Audit Log
