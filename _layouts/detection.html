@@ -99,14 +99,15 @@ layout: base
         </section>
       {% endif %}
 
-      {% if page.tuning_notes %}
+      {% assign tuning_content = page.tuning | default: page.tuning_notes %}
+      {% if tuning_content %}
         <section class="detection-accordion" data-accordion>
           <button class="accordion-toggle" type="button">
             <span>Tuning &amp; false-positive notes</span>
             <span class="icon">+</span>
           </button>
           <div class="accordion-panel">
-            {{ page.tuning_notes | markdownify }}
+            {{ tuning_content | markdownify }}
           </div>
         </section>
       {% endif %}

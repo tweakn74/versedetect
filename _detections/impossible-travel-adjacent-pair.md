@@ -50,7 +50,7 @@ how_it_works: >
   A streaming pairing model compares each successful logon to the prior entry for the same user. It calculates
   geodesic distance and travel speed, then layers AbuseIPDB and IPQS intel. High-risk pairs (>= 500 km and >= 900 km/h)
   or any pair with a fused risk of 60 are emitted.
-tuning_notes: >
+tuning: >
   - If airline travel is common, increase the distance threshold to 800 km or require speed >= 1100 km/h.  
   - Add `lookup trusted_vpn_ip dest_ip OUTPUT disposition` to suppress corporate VPN endpoints.  
   - Enrich with Azure AD sign-in risk by joining to the `Risk` datamodel if available.

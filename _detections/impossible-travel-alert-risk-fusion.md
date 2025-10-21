@@ -43,7 +43,7 @@ how_it_works: >
   Combines the raw Defender risk score with AbuseIPDB and IPQualityScore telemetry. The search keeps the alert-centric
   workflow (analysts pivot from the alert_id) but enriches each record with IP reputation confidence and a VPN
   disposition. Analysts triage only the events that clear the blended score of 50.
-tuning_notes: >
+tuning: >
   - Tune the `triage_score` threshold upward if your AbuseIPDB baseline is noisy; 60 is typical for customers with broad
     geo footprint.  
   - Add allowlists for corporate VPN concentrators via `lookup corporate_access_ips dest_ip OUTPUT disposition`.  

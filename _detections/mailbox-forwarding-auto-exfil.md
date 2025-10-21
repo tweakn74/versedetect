@@ -55,7 +55,7 @@ how_it_works: >
   focuses on entries that include forwarding or redirect actions, enriches the destination domain with multiple
   reputation sources, and produces a blended risk score. Analysts receive a concise view of the forward target plus the
   intel context that justifies response.
-tuning_notes: >
+tuning: >
   - Maintain up-to-date freemail/disposable lists; update weekly to catch new throwaway providers.  
   - Add a lookup of approved forwarding domains (`approved_forward_domains`) to automatically suppress business-justified
     destinations.  
