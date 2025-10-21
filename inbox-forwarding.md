@@ -1,3 +1,8 @@
+---
+layout: default
+title: Robust Inbox Forwarding Rule Exfil in Splunk -- Risk-Based Enrichment
+---
+
 # Robust Inbox Forwarding Rule Exfil in Splunk -- Risk-Based Enrichment (SPL Included)
 
 Full write-up PDF: [download](pdf/Robust%20Inbox%20Forwarding%20Rule%20Exfil%20in%20Splunk.pdf)

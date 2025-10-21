@@ -1,3 +1,8 @@
+---
+layout: default
+title: Versedetect
+---
+
 # Versedetect
 *Advanced Threat Detection & Response Engineering by Craig Glatt*
 

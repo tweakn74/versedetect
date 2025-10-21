@@ -1,3 +1,8 @@
+---
+layout: default
+title: Robust "Impossible Travel" in Splunk -- Risk-Based Enrichment
+---
+
 # Robust "Impossible Travel" in Splunk -- Risk-Based Enrichment (SPL Included)
 
 Full write-up PDF: [download](pdf/Robust%20%E2%80%9CImpossible%20Travel%E2%80%9D%20in%20Splunk.pdf)
