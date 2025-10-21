@@ -25,11 +25,11 @@ Welcome -- this is my working notebook for high-fidelity **SIEM detections**, **
       <ul>
         <li>
           <a href="impossible-travel.html#spl-a-triage-defender-impossible-travel-alerts">Impossible Travel Alert Triage</a>
-          <span class="tech-id">T1078 · Valid Accounts</span>
+          <span class="tech-id">T1078 - Valid Accounts</span>
         </li>
         <li>
           <a href="impossible-travel.html#spl-b-direct-impossible-travel-from-sign-ins">Adjacent-Pair Impossible Travel Detector</a>
-          <span class="tech-id">T1078 · Valid Accounts</span>
+          <span class="tech-id">T1078 - Valid Accounts</span>
         </li>
       </ul>
     </div>
@@ -38,7 +38,7 @@ Welcome -- this is my working notebook for high-fidelity **SIEM detections**, **
       <ul>
         <li>
           <a href="inbox-forwarding.html#spl-b-direct-detector-from-exchange-unified-audit-log">Mailbox Forwarding Rule Exfil</a>
-          <span class="tech-id">T1114.003 · Exfil via Forwarding Rule</span>
+          <span class="tech-id">T1114.003 - Exfil via Forwarding Rule</span>
         </li>
       </ul>
     </div>
