@@ -8,8 +8,6 @@ collections:
     output: true
     permalink: /detections/:slug/
 
-collections_dir: content
-
 defaults:
   - scope:
       path: ""
