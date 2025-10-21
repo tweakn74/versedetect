@@ -1,0 +1,43 @@
+---
+layout: base
+---
+<section class="page-section">
+  <div class="container">
+    <header class="page-header-block">
+      <h1 class="page-title">{{ page.title | default: "MITRE ATT&CK Coverage" }}</h1>
+      <p class="page-subtitle">
+        Quick view of which ATT&amp;CK tactics and techniques are covered today. Brand indicators show where coverage is
+        strong, partial, or still planned.
+      </p>
+    </header>
+
+    <div class="mitre-legend">
+      <span><span class="legend-dot legend-dot--covered"></span> Covered</span>
+      <span><span class="legend-dot legend-dot--partial"></span> Planned / Partial</span>
+    </div>
+
+    <div class="mitre-grid">
+      {% assign tactic_groups = site.detections | group_by_exp: "item", "item.mitre.tactic_name" | sort: "name" %}
+      {% for group in tactic_groups %}
+        <section class="mitre-column">
+          <header>
+            <p class="mitre-tactic-code">{{ group.items[0].mitre.tactic }}</p>
+            <h2>{{ group.name }}</h2>
+          </header>
+          <ul>
+            {% assign group_sorted = group.items | sort: "title" %}
+            {% for detection in group_sorted %}
+              <li class="mitre-technique">
+                <div class="mitre-technique__heading">
+                  <span class="badge badge--covered">{{ detection.mitre.technique }}{% if detection.mitre.subtechnique %}.{{ detection.mitre.subtechnique }}{% endif %}</span>
+                  <a href="{{ detection.url | relative_url }}">{{ detection.title }}</a>
+                </div>
+                <p>{{ detection.summary }}</p>
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<header class="site-header" data-site-header>
+  <div class="container nav-container">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark">V</span>
+      <span class="brand-text">Versedetect</span>
+    </a>
+    <nav class="site-nav" data-nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" data-nav-toggle>
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle__icon"></span>
+      </button>
+      <ul id="nav-menu">
+        {% assign current_url = page.url | default: '/' %}
+        <li><a href="{{ '/' | relative_url }}" class="{% if current_url == '/' %}is-active{% endif %}">Home</a></li>
+        <li><a href="{{ '/detections/' | relative_url }}" class="{% if current_url contains '/detections' %}is-active{% endif %}">Detections</a></li>
+        <li><a href="{{ '/mitre/' | relative_url }}" class="{% if current_url contains '/mitre' %}is-active{% endif %}">MITRE</a></li>
+        <li><a href="{{ '/about/' | relative_url }}" class="{% if current_url contains '/about' %}is-active{% endif %}">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

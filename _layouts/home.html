@@ -1,0 +1,77 @@
+---
+layout: base
+---
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <span class="eyebrow">Versedetect</span>
+      <h1>High-fidelity detection engineering for defenders who hate noise.</h1>
+      <p>
+        Notebook-grade research on credential abuse, mailbox exfil, and response automation. Built for Splunk-first
+        workflows with MITRE coverage you can actually explain to leadership.
+      </p>
+      <div class="hero__actions">
+        <a href="{{ '/detections/' | relative_url }}" class="btn btn--primary">Browse detections</a>
+        <a href="{{ '/mitre/' | relative_url }}" class="btn btn--ghost">View MITRE coverage</a>
+      </div>
+    </div>
+    <div class="hero__meta">
+      <div class="metric-card">
+        <p class="metric-label">Coverage focus</p>
+        <p class="metric-value">Credential Access · Collection</p>
+        <p class="metric-footnote">Expanding to persistence &amp; lateral movement next.</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-label">Last updated</p>
+        <p class="metric-value">{{ site.time | date: "%b %d, %Y" }}</p>
+        <p class="metric-footnote">Latest detections published in the past 30 days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="container">
+    <header class="section-header">
+      <h2>Latest detections</h2>
+      <a class="section-link" href="{{ '/detections/' | relative_url }}">View all detections</a>
+    </header>
+    <div class="card-grid">
+      {% assign sorted_detections = site.detections | sort: 'last_updated' | reverse %}
+      {% for detection in sorted_detections limit:3 %}
+        <article class="card">
+          <div class="card-body">
+            <p class="card-eyebrow">{{ detection.mitre.tactic_name }} · {{ detection.severity | capitalize }}</p>
+            <h3 class="card-title">
+              <a href="{{ detection.url | relative_url }}">{{ detection.title }}</a>
+            </h3>
+            <p class="card-summary">{{ detection.summary }}</p>
+            <ul class="meta-inline">
+              <li>{{ detection.product }}</li>
+              <li>{{ detection.query_language }}</li>
+            </ul>
+          </div>
+          <footer class="card-footer">
+            <span>Updated {{ detection.last_updated | date: "%b %d, %Y" }}</span>
+            <a class="text-link" href="{{ detection.url | relative_url }}">Read detection →</a>
+          </footer>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="page-section page-section--panel">
+  <div class="container">
+    <div class="panel">
+      <div>
+        <h2>MITRE ATT&amp;CK coverage</h2>
+        <p>
+          Visualize how the current detections stack against ATT&amp;CK tactics, drill into coverage gaps, and plan the
+          next engineering sprint.
+        </p>
+      </div>
+      <a class="btn btn--primary" href="{{ '/mitre/' | relative_url }}">Open the MITRE matrix</a>
+    </div>
+  </div>
+</section>

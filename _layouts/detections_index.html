@@ -1,0 +1,131 @@
+---
+layout: base
+---
+<section class="page-section">
+  <div class="container">
+    <header class="page-header-block">
+      <h1 class="page-title">{{ page.title | default: "Detections" }}</h1>
+      {% if page.subtitle %}
+        <p class="page-subtitle">{{ page.subtitle }}</p>
+      {% else %}
+        <p class="page-subtitle">
+          Filter by ATT&amp;CK tactic, data source, or product. All detections are Splunk-ready with risk context baked
+          in.
+        </p>
+      {% endif %}
+    </header>
+
+    <div class="filter-bar" data-detections-filter>
+      <div class="filter-group">
+        <label for="filter-search">Search</label>
+        <input id="filter-search" type="search" placeholder="Search detections" />
+      </div>
+      <div class="filter-group">
+        <label for="filter-tactic">Tactic</label>
+        <select id="filter-tactic">
+          <option value="">All</option>
+          {% assign tactics = "" | split: "" %}
+          {% for detection in site.detections %}
+            {% if detection.mitre.tactic_name %}
+              {% assign tactic_value = detection.mitre.tactic_name | split: "|" %}
+              {% assign tactics = tactics | concat: tactic_value %}
+            {% endif %}
+          {% endfor %}
+          {% assign tactics = tactics | uniq | sort %}
+          {% for tactic in tactics %}
+            <option value="{{ tactic }}">{{ tactic }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-product">Product</label>
+        <select id="filter-product">
+          <option value="">All</option>
+          {% assign products = site.detections | map: "product" | uniq | sort %}
+          {% for product in products %}
+            {% if product %}
+              <option value="{{ product }}">{{ product }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-data-source">Data source</label>
+        <select id="filter-data-source">
+          <option value="">All</option>
+          {% assign sources = "" | split: "" %}
+          {% for detection in site.detections %}
+            {% if detection.data_sources %}
+              {% assign sources = sources | concat: detection.data_sources %}
+            {% endif %}
+          {% endfor %}
+          {% assign sources = sources | uniq | sort %}
+          {% for source in sources %}
+            <option value="{{ source }}">{{ source }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-severity">Severity</label>
+        <select id="filter-severity">
+          <option value="">All</option>
+          {% assign severities = "" | split: "" %}
+          {% for detection in site.detections %}
+            {% if detection.severity %}
+              {% assign severity_value = detection.severity | split: "|" %}
+              {% assign severities = severities | concat: severity_value %}
+            {% endif %}
+          {% endfor %}
+          {% assign severities = severities | uniq | sort %}
+          {% for severity in severities %}
+            <option value="{{ severity | capitalize }}">{{ severity | capitalize }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="card-grid" id="detections-results" data-list>
+      {% for detection in site.detections %}
+        <article class="card" data-detection-card>
+          <div class="card-body">
+            <p class="card-eyebrow">{{ detection.mitre.tactic_name }} · {{ detection.severity | capitalize }}</p>
+            <h3 class="card-title">
+              <a href="{{ detection.url | relative_url }}">{{ detection.title }}</a>
+            </h3>
+            <p class="card-summary">{{ detection.summary }}</p>
+            <ul class="meta-inline">
+              <li>{{ detection.product }}</li>
+              <li>{{ detection.query_language }}</li>
+            </ul>
+          </div>
+          <footer class="card-footer">
+            <span>Updated {{ detection.last_updated | date: "%b %d, %Y" }}</span>
+            <a class="text-link" href="{{ detection.url | relative_url }}">Read detection →</a>
+          </footer>
+        </article>
+      {% endfor %}
+    </div>
+
+    {% assign dataset = site.detections | sort: 'title' %}
+    {% capture detection_json %}
+    [
+    {% for det in dataset %}
+      {
+        "title": {{ det.title | jsonify }},
+        "url": {{ det.url | relative_url | jsonify }},
+        "summary": {{ det.summary | jsonify }},
+        "tactic": {{ det.mitre.tactic | jsonify }},
+        "tactic_name": {{ det.mitre.tactic_name | jsonify }},
+        "technique": {{ det.mitre.technique | jsonify }},
+        "severity": {{ det.severity | jsonify }},
+        "product": {{ det.product | jsonify }},
+        "data_sources": {{ det.data_sources | jsonify }},
+        "query_language": {{ det.query_language | jsonify }},
+        "last_updated": "{{ det.last_updated | date: '%s' }}"
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ]
+    {% endcapture %}
+    <script type="application/json" id="detections-data">{{ detection_json | strip | strip_newlines }}</script>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines }}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+    <script defer src="{{ '/assets/js/site.js' | relative_url }}"></script>
+    {% if page.extra_js %}
+      {% for script in page.extra_js %}
+        <script defer src="{{ script | relative_url }}"></script>
+      {% endfor %}
+    {% endif %}
+  </head>
+  <body class="layout-{{ page.layout | default: 'page' }}">
+    {% include nav.html %}
+    <main class="site-main" id="content">
+      {{ content }}
+    </main>
+    {% include footer.html %}
+  </body>
+</html>
