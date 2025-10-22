@@ -4,7 +4,7 @@ slug: mailbox-forwarding-auto-exfil
 id: DET-0003
 status: stable
 severity: critical
-last_updated: 2025-10-21
+updated: 2025-10-20
 product: Splunk
 author: Craig Glatt
 query_language: SPL
@@ -16,7 +16,7 @@ mitre:
   tactic: TA0009
   tactic_name: Collection
   technique: T1114.003
-  technique_name: Email Collection: Email Forwarding Rule
+  technique_name: "Email Collection: Email Forwarding Rule"
 summary: Enriches Defender alerts and Exchange audit events for auto-forward rules with freemail, disposable, WHOIS, and phishing telemetry to expose stealth exfiltration.
 query: |
   index=o365 sourcetype=o365:management:activity Workload=Exchange* Operation IN ("New-InboxRule","Set-InboxRule","Set-Mailbox")
@@ -62,7 +62,7 @@ tuning: >
   - If you collect Defender alerts, combine them with this search in RBA to collapse duplicate events into one notable.
 downloads:
   - label: Download PDF
-    url: /pdf/Robust%20Inbox%20Forwarding%20Rule%20Exfil%20in%20Splunk.pdf
+    url: /pdfs/Robust%20Inbox%20Forwarding%20Rule%20Exfil%20in%20Splunk.pdf
 related:
   - impossible-travel-alert-risk-fusion
   - impossible-travel-adjacent-pair

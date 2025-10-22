@@ -4,7 +4,7 @@ slug: impossible-travel-adjacent-pair
 id: DET-0002
 status: preview
 severity: high
-last_updated: 2025-10-21
+updated: 2025-10-20
 product: Splunk
 author: Craig Glatt
 query_language: SPL
@@ -56,7 +56,7 @@ tuning: >
   - Enrich with Azure AD sign-in risk by joining to the `Risk` datamodel if available.
 downloads:
   - label: Download PDF
-    url: /pdf/Robust%20%E2%80%9CImpossible%20Travel%E2%80%9D%20in%20Splunk.pdf
+    url: /pdfs/Robust%20%E2%80%9CImpossible%20Travel%E2%80%9D%20in%20Splunk.pdf
 related:
   - impossible-travel-alert-risk-fusion
   - mailbox-forwarding-auto-exfil

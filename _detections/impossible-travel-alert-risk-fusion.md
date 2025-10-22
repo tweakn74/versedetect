@@ -4,7 +4,7 @@ slug: impossible-travel-alert-risk-fusion
 id: DET-0001
 status: stable
 severity: high
-last_updated: 2025-10-21
+updated: 2025-10-20
 product: Splunk
 author: Craig Glatt
 query_language: SPL
@@ -50,7 +50,7 @@ tuning: >
   - Consider piping to Risk-Based Alerting with `| eval risk_object=user, risk_score=triage_score`.
 downloads:
   - label: Download PDF
-    url: /pdf/Robust%20%E2%80%9CImpossible%20Travel%E2%80%9D%20in%20Splunk.pdf
+    url: /pdfs/Robust%20%E2%80%9CImpossible%20Travel%E2%80%9D%20in%20Splunk.pdf
 related:
   - impossible-travel-adjacent-pair
 ---
