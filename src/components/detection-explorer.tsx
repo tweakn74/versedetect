@@ -26,14 +26,14 @@ const defaultFilters: FilterState = {
 };
 
 interface DetectionExplorerProps {
-  initialData: DetectionSearchIndex[];
+  data: DetectionSearchIndex[];
 }
 
-export function DetectionExplorer({ initialData }: DetectionExplorerProps) {
+export function DetectionExplorer({ data }: DetectionExplorerProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
-  const [detections, setDetections] = useState<DetectionSearchIndex[]>(initialData);
+  const [detections, setDetections] = useState<DetectionSearchIndex[]>(data);
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
 
   useEffect(() => {

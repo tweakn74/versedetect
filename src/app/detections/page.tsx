@@ -15,7 +15,7 @@ export default function DetectionsPage() {
           SPL, enrichment logic, tuning notes, and MITRE mapping.
         </p>
       </header>
-      <DetectionExplorer initialData={index} />
+      <DetectionExplorer data={index} />
     </div>
   );
 }
