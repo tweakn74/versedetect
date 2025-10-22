@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { DetectionExplorer } from "@/components/detection-explorer";
 import { getDetectionIndex } from "@/lib/detections";
 
@@ -15,7 +16,15 @@ export default function DetectionsPage() {
           SPL, enrichment logic, tuning notes, and MITRE mapping.
         </p>
       </header>
-      <DetectionExplorer data={index} />
+      <Suspense
+        fallback={
+          <div className="rounded-[var(--radius-lg)] border border-[color:var(--border-subtle)] bg-[color:var(--panel)] p-6 text-sm text-[color:var(--text-muted)]">
+            Loading detection filters…
+          </div>
+        }
+      >
+        <DetectionExplorer data={index} />
+      </Suspense>
     </div>
   );
 }
