@@ -40,7 +40,7 @@ on schema validation errors or duplicate slugs.
 
 - `npm run build` writes a static site to `out/` (GitHub ignores it via `.gitignore`).
 - The workflow in `.github/workflows/deploy.yml` builds the site on every push to `main`,
-  runs `npm run build`, adds `.nojekyll`, and force-pushes the contents of `out/` to the
-  `gh-pages` branch.
+  runs `npm run build`, drops `.nojekyll`, uploads the `out/` artifact, and publishes it via the official `actions/deploy-pages` workflow.
 - Enable GitHub Pages in the repo settings with `gh-pages` / root as the source. The live
   site will resolve at https://tweakn74.github.io/versedetect/ once the workflow completes.
+
