@@ -42,7 +42,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/detections"
-                className="inline-flex items-center justify-center rounded-[var(--radius-sm)] bg-[color:var(--brand)] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-black transition hover:bg-[color:var(--brand-strong)] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-alt)]"
+                className="inline-flex items-center justify-center rounded-[var(--radius-sm)] bg-[color:var(--brand)] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-[color:var(--brand-strong)] focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--brand-alt)]"
               >
                 Browse detections
               </Link>
