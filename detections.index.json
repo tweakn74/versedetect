@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "mailbox-forwarding-auto-exfil",
+    "title": "Mailbox Forwarding Rule Exfil Detector",
+    "summary": "Enriches Defender alerts and Exchange audit events for auto-forward rules with freemail, disposable, WHOIS, and phishing telemetry to expose stealth exfiltration.",
+    "severity": "critical",
+    "status": "stable",
+    "product": "Splunk",
+    "queryLanguage": "SPL",
+    "dataSources": [
+      "Microsoft Defender for Office 365 Alerts",
+      "Exchange Online Management Activity (Unified Audit Log)",
+      "Domain Reputation (OTX, OpenPhish, IPQS)"
+    ],
+    "mitre": {
+      "tactic": "TA0009",
+      "tactic_name": "Collection",
+      "technique": "T1114.003",
+      "technique_name": "Email Collection: Email Forwarding Rule"
+    },
+    "updated": "2025-10-20T00:00:00.000Z"
+  },
+  {
+    "slug": "impossible-travel-alert-risk-fusion",
+    "title": "Impossible Travel Alert Risk Fusion",
+    "summary": "Layers AbuseIPDB and IPQS intel over Defender \"impossible travel\" alerts to prioritize the sign-ins most likely tied to stolen credentials.",
+    "severity": "high",
+    "status": "stable",
+    "product": "Splunk",
+    "queryLanguage": "SPL",
+    "dataSources": [
+      "Microsoft Defender for Cloud Apps Alerts",
+      "Microsoft Defender for Identity Alerts",
+      "IP Reputation (AbuseIPDB, IPQS)"
+    ],
+    "mitre": {
+      "tactic": "TA0006",
+      "tactic_name": "Credential Access",
+      "technique": "T1078",
+      "technique_name": "Valid Accounts"
+    },
+    "updated": "2025-10-20T00:00:00.000Z"
+  },
+  {
+    "slug": "impossible-travel-adjacent-pair",
+    "title": "Adjacent Pair Impossible Travel Detector",
+    "summary": "Streams Entra sign-ins, pairs consecutive logons per user, and flags impossible travel using Haversine distance plus IP intelligence.",
+    "severity": "high",
+    "status": "preview",
+    "product": "Splunk",
+    "queryLanguage": "SPL",
+    "dataSources": [
+      "Entra ID Sign-in Logs",
+      "Azure AD Sign-in Risk",
+      "IP Reputation (AbuseIPDB, IPQS)"
+    ],
+    "mitre": {
+      "tactic": "TA0006",
+      "tactic_name": "Credential Access",
+      "technique": "T1078",
+      "technique_name": "Valid Accounts"
+    },
+    "updated": "2025-10-20T00:00:00.000Z"
+  }
+]
